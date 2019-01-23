@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+	
+<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible">
+	
+<!--content="ie=edge-->
+	
+<title>Webbtjänst med Node.js</title>
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+	<div class="jumbotron text-center">   
+		<h1 class="display-4">The Best Quotes</h1>
+		<p>For inspiring days</p> 
+	</div>
+	
+	
+	
+	<div class="container1">
+		<div id="row">
+		</div>
+	</div>
+
+	
+	
+	
+
+	
+	<form method="post" action="http://localhost:3001/quotes/add"  id="form">
+  <div class="form-group">
+    
+    <input type="text" class="form-control" id="Name" placeholder="Namn" name="Name">
+  </div>
+	<div class="form-group">
+    
+    <input type="text" class="form-control" id="Proffession" placeholder="Yrke/sysselsättning" name="Proffession" >
+  </div>	
+	<div class="form-group">
+    
+		<!--<input type="text" class="form-control" id="Genre" placeholder="Genre" name="Genre" >-->
+		
+   <select class="form-control" id="Genre" name="Genre" >
+      <option>Kärlek</option>
+      <option>Motivation</option>
+      <option>Filosofi</option>
+      <option>Vänskap</option>
+    </select> 
+  </div>
+		 <div class="form-group">
+   
+    <textarea class="form-control" id="Quote" rows="3" placeholder="skriv din quote här..." name="Quote" ></textarea>
+  </div>
+		<input class="btn btn-outline-secondary" type="submit" value="Posta" id="add" name="add">
+		
+	</form>
+	
+	
+		
+		
+	<footer id="footermy">
+  <div class="left">
+    <a href="https://github.com/FridaPa">FridaP</a>
+    <span>&copy; 2019 Frida Pastak.</span>
+  </div>
+  <div class="left">
+    <span>Av:</span>
+    <a href="https://github.com/FridaPa">Frida Pastak</a>
+  </div>
+</footer>
+	
+	
+	
+	
+	
+	
+<script src="js/client.js"></script>
+
+	
+</body>
+</html>

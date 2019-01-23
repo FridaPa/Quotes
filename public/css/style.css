@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+
+.col-sm-3 {
+	float: left;
+	border: 1px solid #C7C7C7;
+	margin: 1%;
+	padding: 1%;
+	box-shadow: 0px 1px 1px 0.5px #e9ecef;
+	
+
+	
+}	
+
+
+.container1 {
+margin: auto;
+}
+
+#row {
+
+	margin-left: 15%;
+}
+
+#form {
+	width: 21%;
+	margin-left: 16%;
+	margin-top: 1%;
+	
+}
+#footermy{
+	background-color: #e9ecef;
+	width: 100%;
+	height: 50px;
+margin-top: 1%;
+	
+	
+}
+
+.left {
+	float: right;
+	padding-right: 1%;
+	padding-top: 0.5%;
+}
