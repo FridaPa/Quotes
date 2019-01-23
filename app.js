@@ -152,7 +152,7 @@ app.delete("/quotes/:id", function(req, res){
 
 
 //port för anslutning
-var port = 3001;
+var port = process.env.PORT || 3001; 
 
 //starta servern med kollmedd
 app.listen(port, function() {
