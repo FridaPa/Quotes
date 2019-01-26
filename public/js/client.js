@@ -8,13 +8,15 @@ var jsonData;
 // DOM onload
 document.addEventListener("DOMContentLoaded", function(){ // Wait for DOM tree to get parsed
  // Show all courses in table - GET
+
 //nytt ajaxanrop 
    var xmlhttp = new XMLHttpRequest();
+
 	//en funktion som ska utföras när förfrågan GET får ett svar.
 xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
            if (xmlhttp.status == 200) {
-			   
+			  
                   //hämtar jsonarray fr servern och gör om till js genom parse()
                jsonData = JSON.parse( xmlhttp.responseText );
                 for(var i=0; i <jsonData.length; i++){
@@ -23,21 +25,7 @@ xmlhttp.onreadystatechange = function() {
 					
                    list.innerHTML +=  "<div class='col-sm-3'> <p class='font-italic'>" + jsonData[i].Quote + "</p><p class='blockquote-footer'>" + jsonData[i].Name+ ", " + jsonData[i].Proffession + "</p><p class='authormessage'>" + jsonData[i].Genre + "</p><p><button type='button' class='btn btn-secondary btn-sm' id='" + jsonData[i]._id + "'>Radera</button></div>" ;
 					
-				
-					/*var button = document.createElement("BUTTON");
-					button.innerHTML = "updatera";
-					inlaggworkout.appendChild(button);
-					button.setAttribute("id", "update");
-					update.addEventListener("click", function(){
-						
-						var div = document.createElement("DIV");
-						document.body.appendChild(div);
-						//div.setAttribute("class", "hiddendiv");
-						div.innerHTML = " <form method='post' action=''>" +
-							"<label for='Name'>Namn</label> <br> " +
-							"<input type='text'  id='Name' name='Name'><br>" +
-							"<input type='submit' id='Updatera" + "name='update' value='updatera'></form>" ;
-					});*/
+			
 					
 					
 					
@@ -62,7 +50,7 @@ xmlhttp.open("GET", URL, true);
 	
 	
   // Click on register - POST
-    document.getElementById("add").addEventListener("click", function(ev){
+   document.getElementById("add").addEventListener("click", function(ev){
         var Name = document.getElementById("Name").value;
         var Proffession = document.getElementById("Proffession").value;
         var Genre = document.getElementById("Genre").value;
@@ -120,38 +108,33 @@ xmlhttp.open("GET", URL, true);
 	
 	
 	  // Click on update  button - PUT
-   /*document.getElementById("updatera").addEventListener("click", function(ev){
+   /*document.getElementById("update").addEventListener("click", function(ev){
 	 
 	   
-        let id = document.getElementById("idno").value;
-        let brand = document.getElementById("brando").value;
-        let model = document.getElementById("modelo").value;
-        let year = document.getElementById("yearo").value;
+        var Name = document.getElementById("Name").value;
+        var Proffession = document.getElementById("Proffession").value;
+        var Genre = document.getElementById("Genre").value;
+		var Quote = document.getElementById("Quote").value; 
 	   
-        if( !(id != '' && brand != '' && model != '' && year != '') ) location.reload();
-
-        let json =  {"car": brand, "model": model, "year": year};
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("PUT", URL+"/"+id, true);
-        xmlhttp.setRequestHeader('Content-Type', 'application/json');
-        xmlhttp.send( JSON.stringify(json) );
-
-        xmlhttp.onload = function() {
-       var jsonData = JSON.parse( this.responseText );
-     for(var i=0; i < jsonData.length; i++){
-		 document.getElementById("carlist").innerHTML += "<td>"+jsonData[i].ID+"</td><td>"+jsonData[i].Car+"</td><td>" + jsonData[i].Model + "</td><td>" + jsonData[i].Year + "</td>";    
-     }
-            location.reload();
-        }  
-  })*/
-	
-	
-	
-	
-	
-	
-	
-	
-	
-}); 
+	   if (Name != '' || Proffession != '' || Genre != '' || Quote != '') {   
+		   location.reload(); 
+	   } else {  
+				 
+		 var json =  {"Name": Name, "Proffession": Proffession, "Genre": Genre, "Quote": Quote}; 
+		 var xmlhttp = new XMLHttpRequest();
+		 xmlhttp.open("PUT", "http://localhost:3001/quotes/"+ "/" +Name, true);
+		 xmlhttp.setRequestHeader('Content-Type', 'application/json');
+		 xmlhttp.send( JSON.stringify(json) );
+		 xmlhttp.onload = function() {
+		var jsonData = JSON.parse( this.responseText );
+			 
+			for(var i=0; i < jsonData.length; i++){
+				 var list = document.getElementById("row");
+					list.innerHTML +=  "<div class='col-sm-3'> <p class='font-italic'>" + jsonData[i].Quote + "</p><p class='blockquote-footer'>" + jsonData[i].Name+ ", " + jsonData[i].Proffession + "</p><p class='authormessage'>" + jsonData[i].Genre + "</p></div>" ;
+					 }
+					 location.reload();
+				 }; 
+			 }
+   });	*/
+  }); 
 

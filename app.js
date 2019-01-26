@@ -3,6 +3,8 @@ const express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 var mongoose = require("mongoose");
+const axios = require('axios');
+
 
 
 //anslut till db
@@ -28,11 +30,6 @@ app.all('/*', function(req, res, next) {
 	res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
 	next();
 });
-
-
-
-
-
 
 
 //lägger till bodyparser som gör att extress kan läsa av forms
@@ -96,8 +93,9 @@ app.post("/quotes/add", function(req, res){
 //hämta enskild kurs med hjälp av ett id
 app.get("/quotes/:id", (req, res, next) => {
 	
+	
 	//hämtar de värdet med rätt id
-quote.findById(req.params.id)
+quotes.findById(req.params.id)
 	.then(doc => {
 	if (!doc) { return res.status(404).end(); }
 	return res.status(200).json(doc);
@@ -109,10 +107,11 @@ quote.findById(req.params.id)
 
 
 
-app.put("/quotes/:id", (req, res) => {
+/*app.put("/quotes/:id", (req, res, next) => {
 let id = req.params.id;
 	
-	data = {
+	 var quote = new quotes();
+	 var data = {
 		Name: req.body.Name,
 		Proffession: req.body.Proffession,
 		Genre: req.body.Genre,
@@ -120,16 +119,88 @@ let id = req.params.id;
 	};
 	
 	quotes.findByIdAndUpdate(id, data, function(err, quote){
+		
 		if(err)throw err;
-		res.send('Updaterad Quote - '+quote.Guote);
+		res.send('Updaterad Quote - '+quote.Quote);
+		
 	});
 	
-});
+});*/
+
+
+/*app.put("/quotes/:id", function(req, res, next){
+	quotes.findByIdAndUpdate({_id:req.params.id}, req.body).then(function(quotes){
+		
+		res.send(quotes);
+		.catch(err => next(err));
+		console.log("ffffff");
+	});
+
+});*/
+
+/*app.put("/quotes/:id", function(req, res) {
+	console.log(req.params.id);
+	res.send("hello");
+
+});*/
+
+
+/*app.put("/quotes/:id", (req, res) => {
+	 var UpdateId = req.params.id;
+	
+	var quote = new quotes();
+	
+	//letar upp citat med Spec ID
+	quotes.findOne({_id: UpdateId}, function(err, quote){
+		
+		if(err) {
+			console.log(err);
+			res.send(err);
+		}
+		else {
+			//kolla om några quotes matchar id:t
+			if(!quote) {
+				res.status(404).send();
+			}
+			else {
+				//updatera
+				if(req.body.Name){
+					quote.Name = req.body.Name;
+				}
+				
+				if(req.body.Proffession){
+					quote.Proffession = req.body.Proffession;
+				}
+				
+				if(req.body.Quote){
+					quote.Quote = req.body.Quote;
+				}
+				if(req.body.Genre){
+					quote.Genre = req.body.Genre;
+				}
+				console.log(req.body);
+				//callbackfunktion updateQuote
+				quote.save(function(err, updateQuote){
+					if(err){
+						res.send(err);
+					}
+					else{
+						res.send(updateQuote);
+					}
+				});
+			}
+		}
+		
+	});
+
+});*/
+
+
 
 
 //ta bort ett visst id
 app.delete("/quotes/:id", function(req, res){
-	 console.log("hej");
+	
 	quotes.findByIdAndRemove(req.params.id)
 	.exec()
 	
