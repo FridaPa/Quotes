@@ -128,35 +128,21 @@ let id = req.params.id;
 });*/
 
 
-/*app.put("/quotes/:id", function(req, res, next){
-	quotes.findByIdAndUpdate({_id:req.params.id}, req.body).then(function(quotes){
-		
-		res.send(quotes);
-		.catch(err => next(err));
-		console.log("ffffff");
-	});
-
-});*/
-
-/*app.put("/quotes/:id", function(req, res) {
-	console.log(req.params.id);
-	res.send("hello");
-
-});*/
 
 
-/*app.put("/quotes/:id", (req, res) => {
+app.put("/quotes/:id", (req, res) => { 
 	 var UpdateId = req.params.id;
 	
 	var quote = new quotes();
 	
 	//letar upp citat med Spec ID
 	quotes.findOne({_id: UpdateId}, function(err, quote){
-		
+		//debugger;debugger;
 		if(err) {
 			console.log(err);
 			res.send(err);
 		}
+		
 		else {
 			//kolla om några quotes matchar id:t
 			if(!quote) {
@@ -179,6 +165,7 @@ let id = req.params.id;
 					quote.Genre = req.body.Genre;
 				}
 				console.log(req.body);
+				
 				//callbackfunktion updateQuote
 				quote.save(function(err, updateQuote){
 					if(err){
@@ -193,7 +180,7 @@ let id = req.params.id;
 		
 	});
 
-});*/
+});
 
 
 
@@ -222,7 +209,7 @@ app.delete("/quotes/:id", function(req, res){
 
 
 
-//port för anslutning
+//port för anslutning. vad som helst i miljövariabel PORT, eller 3000 om det inte finns något där.
 var port = process.env.PORT || 3001; 
 
 //starta servern med kollmedd

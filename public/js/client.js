@@ -84,7 +84,7 @@ xmlhttp.open("GET", URL, true);
    document.getElementById("row").addEventListener("click", function(ev){ 
 		
         var http = new XMLHttpRequest(); //genom xmlhttprequest kan ja göra AJAX anrop som behövs för att komma åt webbtjänsterna via JS.
-        http.open("DELETE", "https://limitless-inlet-21021.herokuapp.com/quotes/" +ev.target.id, true); 
+        http.open("DELETE", "https://limitless-inlet-21021.herokuapp.com/quotes" +ev.target.id, true); 
 	
 	   
 	   
@@ -99,16 +99,10 @@ xmlhttp.open("GET", URL, true);
 	
 	
 	
-	
-	
 
 	
-	
-	
-	
-	
 	  // Click on update  button - PUT
-   /*document.getElementById("update").addEventListener("click", function(ev){
+  /* document.getElementById("update").addEventListener("click", function(ev){
 	 
 	   
         var Name = document.getElementById("Name").value;
