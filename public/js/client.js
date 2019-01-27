@@ -1,7 +1,7 @@
 // JavaScript Document
 
 //url adresen till webbtjänsten
-var URL = "https://limitless-inlet-21021.herokuapp.com/quotes";
+var URL = "http://localhost:3001/quotes/";
 
 var jsonData;
 
@@ -64,7 +64,7 @@ xmlhttp.open("GET", URL, true);
 		   //om man inte skrivit in ngt, om det inte är '' en sträng.  ladda bara om sidan
 		var json =  {"Name": Name, "Proffession": Proffession, "Genre": Genre, "Quote": Quote};  // skapa json obj med infon
         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST", "https://limitless-inlet-21021.herokuapp.com/quotes/add", true); // AJAX ANROP MED metoden post
+        xmlhttp.open("POST", "http://localhost:3001/quotes/add", true); // AJAX ANROP MED metoden post
         xmlhttp.setRequestHeader('Content-Type', 'application/json');
         xmlhttp.send( JSON.stringify(json));// skickar json till servern via ajax som gör om den till en assoc
 
@@ -84,7 +84,7 @@ xmlhttp.open("GET", URL, true);
    document.getElementById("row").addEventListener("click", function(ev){ 
 		
         var http = new XMLHttpRequest(); //genom xmlhttprequest kan ja göra AJAX anrop som behövs för att komma åt webbtjänsterna via JS.
-        http.open("DELETE", "https://limitless-inlet-21021.herokuapp.com/quotes" +ev.target.id, true); 
+        http.open("DELETE", "http://localhost:3001/quotes/" +ev.target.id, true); 
 	
 	   
 	   
